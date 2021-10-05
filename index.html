@@ -8,7 +8,17 @@
   <body>
 
     <h1>Tic Tac Toe Game</h1>
-    <div class="grid-container">
+      <button id="start-btn" class="enterNameBtn" type="button">Enter Your Name</button>
+    <form id="customer" class="player-hide">
+      <label>Customize Your Name:</label>
+      <input class="name" type="text" name="name" placeholder="type your name">
+      <button id="name-btn" class="submitBtn" type="button" name="button">Submit</button>
+    </form>
+    <div id="win" class="winner winnier-hide">
+      <p id="winnerx">Player X win: 0</p>
+      <p id="winnero">Player O win: 0</p>
+    </div>
+    <div id="grid" class="grid-container">
       <div class="grid-item" id="item0"></div>
       <div class="grid-item" id="item1"></div>
       <div class="grid-item" id="item2"></div>
@@ -19,12 +29,12 @@
       <div class="grid-item" id="item7"></div>
       <div class="grid-item" id="item8"></div>
     </div>
-    <div class="result">
+    <div class="result"></div>
 
+    <div class="buttons">
+      <button id="game-btn" class="restart-game" type="button" name="button">Restart Game</button>
+      <button id="change-btn" class="changeNameBtn" type="button">Leave Game</button>
     </div>
-
-    <button type="button" name="button">Restart Game</button>
-
 
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/game.js"></script>
