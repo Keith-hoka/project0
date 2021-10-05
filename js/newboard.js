@@ -5,14 +5,18 @@ let clickedArr = [clickedArrX, clickedArrO];
 let currentPlayer = "X";
 
 const winning = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8],
-  [2,4,6],
+  [0,1,2,3,4],
+  [5,6,7,8,9],
+  [10,11,12,13,14],
+  [15,16,17,18,19],
+  [20,21,22,23,24],
+  [0,5,10,15,20],
+  [1,6,11,16,21],
+  [2,7,12,17,22],
+  [3,8,13,18,23],
+  [4,9,14,19,24],
+  [0,6,12,18,24],
+  [4,8,12,16,20]
 ];
 
 let winRoundOfX = 0;
@@ -80,7 +84,7 @@ $(".grid-item").each(function(){
     toggle();
     for (let i = 0; i < winning.length; i++) {
       for (let n = 0; n < clickedArr.length; n++){
-        if (clickedArrO.length + clickedArrX.length < 9 && winning[i].every(elem => clickedArr[n].includes(elem))){
+        if (clickedArrO.length + clickedArrX.length < 25 && winning[i].every(elem => clickedArr[n].includes(elem))){
           if (n === 0){
             winRoundOfX = +prevWinX + 1;
             localStorage.setItem("roundsX", winRoundOfX);
@@ -99,11 +103,10 @@ $(".grid-item").each(function(){
         }
       }
     }
-    if (clickedArrO.length + clickedArrX.length === 9){
+    if (clickedArrO.length + clickedArrX.length === 25){
       result();
       $(".result").append("<p>It is a Tie! No one wins</p>");
     }
-    // computerPlay($(this).index());
   });
 }) ;
 
@@ -122,19 +125,3 @@ const result = function(){
 $("#game-btn").click(function(){
   location.reload();
 });
-
-// const computerPlay = function(index) {
-//   const randomIndex = Math.round(Math.random() * 8);
-//   if (gridArr.length > 0){
-//     for (let i = 0; i < gridArr.length; i++){
-//       if (index !== randomIndex) {
-//         console.log(index);
-//         console.log(randomIndex);
-//         $(`#item${gridArr[randomIndex]}`).text("O");
-//         gridArr = gridArr.filter(item => item !== randomIndex);
-//         console.log(gridArr);
-//       }
-//     }
-//
-//   }
-// };
