@@ -21,8 +21,8 @@ const winning = [
 
 let winRoundOfX = 0;
 let winRoundOfO = 0;
-let prevWinX = localStorage.getItem("roundsX");
-let prevWinO = localStorage.getItem("roundsO");
+let prevWinX = localStorage.getItem("roundsX2");
+let prevWinO = localStorage.getItem("roundsO2");
 
 $("#start-btn").click(function(){
     $("#start-btn").attr("class", "enterNameBtn-hide");
@@ -32,7 +32,7 @@ $("#start-btn").click(function(){
 
 $(".submitBtn").click(function(){
   const cusName = $(".name").val();
-  localStorage.setItem("name", cusName);
+  localStorage.setItem("name2", cusName);
   $("form").addClass("player-hide");
   $("#winnerx").text(`Player ${cusName} win: 0`);
   $("#winnero").text(`Player O win: 0`);
@@ -51,7 +51,7 @@ $("#change-btn").click(function(){
   location.reload();
 });
 
-let name = localStorage.getItem("name");
+let name = localStorage.getItem("name2");
 
 if (prevWinX === null){
   if(name === null) {
@@ -87,25 +87,29 @@ $(".grid-item").each(function(){
         if (clickedArrO.length + clickedArrX.length < 25 && winning[i].every(elem => clickedArr[n].includes(elem))){
           if (n === 0){
             winRoundOfX = +prevWinX + 1;
-            localStorage.setItem("roundsX", winRoundOfX);
+            localStorage.setItem("roundsX2", winRoundOfX);
             result();
             if (name === null) {
               $(".result").append(`<p>Congratulations! You win your game!</p>`);
+              $("#win-image").attr("class", "fireworks");
             } else {
               $(".result").append(`<p>Congratulations! Winner is ${name}!</p>`);
+              $("#win-image").attr("class", "fireworks");
             }
           } else {
             winRoundOfO = +prevWinO + 1;
-            localStorage.setItem("roundsO", winRoundOfO);
+            localStorage.setItem("roundsO2", winRoundOfO);
             result();
-            $(".result").append("<p>You lose your game. Winner is O!</p>");
+            $(".result").append("<p>You lose your game!</p>");
+            $("#lose-image").attr("class", "rain");
           }
         }
       }
     }
     if (clickedArrO.length + clickedArrX.length === 25){
       result();
-      $(".result").append("<p>It is a Tie! No one wins</p>");
+      $(".result").append("<p>It is Tie! No one wins</p>");
+      $("#tie-image").attr("class", "handshake");
     }
   });
 }) ;

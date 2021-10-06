@@ -32,7 +32,7 @@ form {
 
 .enterNameBtn {
   position: absolute;
-  margin-left: 200px;
+  margin-left: 120px;
   display: inline-block;
   width: 350px;
   height: 50px;
@@ -54,6 +54,30 @@ form {
   font-size: 35px;
 }
 
+.peopleBtn {
+  position: absolute;
+  margin-left: 450px;
+  display: inline-block;
+  width: 360px;
+  height: 50px;
+  padding-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  border: none;
+  background-color: #C2B092;
+  text-align: center;
+  color: #EAE3C8;
+}
+
+.peopleBtn-hide {
+  display: none;
+}
+
+.peopleBtn:hover {
+  color: white;
+  font-size: 35px;
+}
+
 a {
   text-decoration: none;
   color: #EAE3C8;
@@ -66,7 +90,7 @@ a:hover {
 .newBoardBtn {
   position: absolute;
   display: inline-block;
-  right: 220px;
+  right: 130px;
   width: 350px;
   height: 50px;
   padding-bottom: 30px;
@@ -246,6 +270,7 @@ input:focus {
   background-color: #C2B092;
   text-align: center;
   color: #EAE3C8;
+  background-color: transparent;
 }
 
 .restart-game:hover {
@@ -269,6 +294,7 @@ input:focus {
   background-color: #C2B092;
   text-align: center;
   color: #EAE3C8;
+  background-color: transparent;
 }
 
 .changeNameBtn-hide {
@@ -278,4 +304,37 @@ input:focus {
 .changeNameBtn:hover {
   color: white;
   font-size: 35px;
+}
+
+.fireworks {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+.fireworks-hide {
+  display: none;
+}
+
+.rain {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+.rain-hide {
+  display: none;
+}
+
+.handshake {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+.handshake-hide {
+  display: none;
 }

@@ -2,6 +2,7 @@
 let clickedArrX = [];
 let clickedArrO = [];
 let clickedArr = [clickedArrX, clickedArrO];
+let boardArr = [0,1,2,3,4,5,6,7,8];
 let currentPlayer = "X";
 
 const winning = [
@@ -17,8 +18,8 @@ const winning = [
 
 let winRoundOfX = 0;
 let winRoundOfO = 0;
-let prevWinX = localStorage.getItem("roundsX");
-let prevWinO = localStorage.getItem("roundsO");
+let prevWinX = localStorage.getItem("roundsX3");
+let prevWinO = localStorage.getItem("roundsO3");
 
 $("#start-btn").click(function(){
     $("#start-btn").attr("class", "enterNameBtn-hide");
@@ -28,7 +29,7 @@ $("#start-btn").click(function(){
 
 $(".submitBtn").click(function(){
   const cusName = $(".name").val();
-  localStorage.setItem("name", cusName);
+  localStorage.setItem("name3", cusName);
   $("form").addClass("player-hide");
   $("#winnerx").text(`Player ${cusName} win: 0`);
   $("#winnero").text(`Player O win: 0`);
@@ -47,7 +48,7 @@ $("#change-btn").click(function(){
   location.reload();
 });
 
-let name = localStorage.getItem("name");
+let name = localStorage.getItem("name3");
 
 if (prevWinX === null){
   if(name === null) {
@@ -72,18 +73,15 @@ if (prevWinO === null){
 $(".grid-item").each(function(){
   $(this).click(function(){
     $(this).text(currentPlayer);
-    if (currentPlayer === "X") {
       clickedArrX.push($(this).index());
-    } else {
-      clickedArrO.push($(this).index());
-    }
-    toggle();
+      boardArr = boardArr.filter(item => item !== $(this).index());
+      computerPlay();
     for (let i = 0; i < winning.length; i++) {
       for (let n = 0; n < clickedArr.length; n++){
         if (clickedArrO.length + clickedArrX.length < 9 && winning[i].every(elem => clickedArr[n].includes(elem))){
           if (n === 0){
             winRoundOfX = +prevWinX + 1;
-            localStorage.setItem("roundsX", winRoundOfX);
+            localStorage.setItem("roundsX3", winRoundOfX);
             result();
             if (name === null) {
               $(".result").append(`<p>Congratulations! You win your game!</p>`);
@@ -94,7 +92,7 @@ $(".grid-item").each(function(){
             }
           } else {
             winRoundOfO = +prevWinO + 1;
-            localStorage.setItem("roundsO", winRoundOfO);
+            localStorage.setItem("roundsO3", winRoundOfO);
             result();
             $(".result").append("<p>You lose your game!</p>");
             $("#lose-image").attr("class", "rain");
@@ -107,14 +105,8 @@ $(".grid-item").each(function(){
       $(".result").append("<p>It is Tie! No one wins</p>");
       $("#tie-image").attr("class", "handshake");
     }
-    // computerPlay($(this).index());
   });
 }) ;
-
-const toggle = function(){
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
-  return currentPlayer;
-};
 
 const result = function(){
   $(".grid-container").remove();
@@ -127,18 +119,11 @@ $("#game-btn").click(function(){
   location.reload();
 });
 
-// const computerPlay = function(index) {
-//   const randomIndex = Math.round(Math.random() * 8);
-//   if (gridArr.length > 0){
-//     for (let i = 0; i < gridArr.length; i++){
-//       if (index !== randomIndex) {
-//         console.log(index);
-//         console.log(randomIndex);
-//         $(`#item${gridArr[randomIndex]}`).text("O");
-//         gridArr = gridArr.filter(item => item !== randomIndex);
-//         console.log(gridArr);
-//       }
-//     }
-//
-//   }
-// };
+const computerPlay = function() {
+  const randomIndex = Math.round(Math.random() * boardArr.length - 1);
+  if (boardArr.length > 1){
+    $(`#item${boardArr[randomIndex]}`).text("O");
+    clickedArrO.push(boardArr[randomIndex]);
+    boardArr = boardArr.slice(0, randomIndex).concat(boardArr.slice(randomIndex+1, boardArr.length));
+  }
+};
