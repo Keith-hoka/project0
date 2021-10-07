@@ -10,7 +10,7 @@ This game was created by HTML, CSS, JavaScript and jQuery for DOM manipulation. 
 
 ## Features
 
-This game can let you customize your player name and play with people on 3X3 board by default, if you want more difficult mode, you can also try playing with AI computers on a bigger 5X5 board! Have a try!
+This game can let you customize your player name and record your winning record, you will be able to play with people on 3X3 board by default, if you want more difficult modes, you can also try playing with AI computers on a bigger 5X5 board! Have a try!
 
 ### Special thanks
 
