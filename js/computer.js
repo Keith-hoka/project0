@@ -81,8 +81,6 @@ $(".grid-item").each(function(){
       } else {
         clickedArrX.push($(this).index());
         boardArr = boardArr.filter(item => item !== $(this).index());
-        console.log(clickedArrX);
-        console.log(boardArr);
         $(this).text(currentPlayer);
         computerPlay();
       }
@@ -137,8 +135,5 @@ const computerPlay = function() {
     $(`#item${boardArr[randomIndex]}`).text("O");
     clickedArrO.push(boardArr[randomIndex]);
     boardArr = boardArr.filter(item => item !== boardArr[randomIndex]);
-    console.log(randomIndex);
-    console.log(boardArr);
-    console.log(clickedArrO);
   }
 };
