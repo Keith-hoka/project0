@@ -24,6 +24,7 @@ $("#start-btn").click(function(){
     $("#start-btn").attr("class", "enterNameBtn-hide");
     $("form").removeClass();
     $("#newBoard-btn").attr("class", "newBoardBtn-hide");
+    $("#people-btn").attr("class", "peopleBtn-hide");
 });
 
 $(".submitBtn").click(function(){
@@ -34,12 +35,14 @@ $(".submitBtn").click(function(){
   $("#winnero").text(`Player O win: 0`);
   $("#start-btn").attr("class", "enterNameBtn");
   $("#newBoard-btn").attr("class", "newBoardBtn");
+  $("#people-btn").attr("class", "peopleBtn");
 });
 
 $("#cancel-btn").click(function(){
   $("form").addClass("player-hide");
   $("#start-btn").attr("class", "enterNameBtn");
   $("#newBoard-btn").attr("class", "newBoardBtn");
+  $("#people-btn").attr("class", "peopleBtn");
 });
 
 $("#change-btn").click(function(){
@@ -71,13 +74,18 @@ if (prevWinO === null){
 
 $(".grid-item").each(function(){
   $(this).click(function(){
-    $(this).text(currentPlayer);
     if (currentPlayer === "X") {
-      clickedArrX.push($(this).index());
-    } else {
+      if (clickedArrX.at(-1) !== $(this).index() && clickedArrO.at(-1) !== $(this).index()){
+        clickedArrX.push($(this).index());
+        $(this).text(currentPlayer);
+        toggle();
+      }
+    } else if (clickedArrO.at(-1) !== $(this).index() && clickedArrX.at(-1) !== $(this).index()){
       clickedArrO.push($(this).index());
+      $(this).text(currentPlayer);
+      toggle();
     }
-    toggle();
+
     for (let i = 0; i < winning.length; i++) {
       for (let n = 0; n < clickedArr.length; n++){
         if (clickedArrO.length + clickedArrX.length < 9 && winning[i].every(elem => clickedArr[n].includes(elem))){
@@ -107,7 +115,6 @@ $(".grid-item").each(function(){
       $(".result").append("<p>It is Tie! No one wins</p>");
       $("#tie-image").attr("class", "handshake");
     }
-    // computerPlay($(this).index());
   });
 }) ;
 
@@ -126,19 +133,3 @@ const result = function(){
 $("#game-btn").click(function(){
   location.reload();
 });
-
-// const computerPlay = function(index) {
-//   const randomIndex = Math.round(Math.random() * 8);
-//   if (gridArr.length > 0){
-//     for (let i = 0; i < gridArr.length; i++){
-//       if (index !== randomIndex) {
-//         console.log(index);
-//         console.log(randomIndex);
-//         $(`#item${gridArr[randomIndex]}`).text("O");
-//         gridArr = gridArr.filter(item => item !== randomIndex);
-//         console.log(gridArr);
-//       }
-//     }
-//
-//   }
-// };

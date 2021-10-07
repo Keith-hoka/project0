@@ -25,6 +25,7 @@ $("#start-btn").click(function(){
     $("#start-btn").attr("class", "enterNameBtn-hide");
     $("form").removeClass();
     $("#newBoard-btn").attr("class", "newBoardBtn-hide");
+    $("#people-btn").attr("class", "peopleBtn-hide");
 });
 
 $(".submitBtn").click(function(){
@@ -35,12 +36,14 @@ $(".submitBtn").click(function(){
   $("#winnero").text(`Player O win: 0`);
   $("#start-btn").attr("class", "enterNameBtn");
   $("#newBoard-btn").attr("class", "newBoardBtn");
+  $("#people-btn").attr("class", "peopleBtn");
 });
 
 $("#cancel-btn").click(function(){
   $("form").addClass("player-hide");
   $("#start-btn").attr("class", "enterNameBtn");
   $("#newBoard-btn").attr("class", "newBoardBtn");
+  $("#people-btn").attr("class", "peopleBtn");
 });
 
 $("#change-btn").click(function(){
