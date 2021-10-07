@@ -28,6 +28,8 @@ $("#start-btn").click(function(){
 });
 
 $(".submitBtn").click(function(){
+  localStorage.clear();
+  location.reload();
   const cusName = $(".name").val();
   localStorage.setItem("name", cusName);
   $("form").addClass("player-hide");
