@@ -120,6 +120,7 @@ const result = function(){
   $(".winner").remove();
   $("#start-btn").attr("class", "enterNameBtn-hide");
   $("#newBoard-btn").attr("class", "newBoardBtn-hide");
+  $("#people-btn").attr("class", "peopleBtn-hide");
 };
 
 $("#game-btn").click(function(){
