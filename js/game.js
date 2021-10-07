@@ -75,12 +75,14 @@ if (prevWinO === null){
 $(".grid-item").each(function(){
   $(this).click(function(){
     if (currentPlayer === "X") {
-      if (clickedArrX.at(-1) !== $(this).index() && clickedArrO.at(-1) !== $(this).index()){
+      // if (clickedArrX.at(-1) !== $(this).index() && clickedArrO.at(-1) !== $(this).index()){
+      if (clickedArrX.slice(clickedArrX.length - 1) !== $(this).index() && clickedArrO.slice(clickedArrO.length - 1) !== $(this).index()){
         clickedArrX.push($(this).index());
         $(this).text(currentPlayer);
         toggle();
       }
-    } else if (clickedArrO.at(-1) !== $(this).index() && clickedArrX.at(-1) !== $(this).index()){
+    // } else if (clickedArrO.at(-1) !== $(this).index() && clickedArrX.at(-1) !== $(this).index()){
+    } else if (clickedArrO.slice(clickedArrO.length - 1) !== $(this).index() && clickedArrX.slice(clickedArrX.length - 1) !== $(this).index()){
       clickedArrO.push($(this).index());
       $(this).text(currentPlayer);
       toggle();

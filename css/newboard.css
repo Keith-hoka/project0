@@ -31,8 +31,7 @@ form {
 }
 
 .enterNameBtn {
-  position: absolute;
-  margin-left: 120px;
+  margin-left: 10%;
   display: inline-block;
   width: 350px;
   height: 50px;
@@ -55,8 +54,6 @@ form {
 }
 
 .peopleBtn {
-  position: absolute;
-  margin-left: 450px;
   display: inline-block;
   width: 360px;
   height: 50px;
@@ -111,9 +108,7 @@ a:hover {
 }
 
 .newBoardBtn {
-  position: absolute;
   display: inline-block;
-  right: 130px;
   width: 350px;
   height: 50px;
   padding-bottom: 30px;
@@ -175,8 +170,9 @@ input:focus {
 }
 
 .winner {
+  float: left;
+  display: block;
   font-size: 30px;
-  position: absolute;
   margin-left: 50px;
   margin-top: 50px;
 }
@@ -186,7 +182,9 @@ input:focus {
 }
 
 .grid-container {
-  margin-top: 80px;
+  margin-top: 30px;
+  margin-left: 30%;
+  width: 500px;
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px;
   grid-template-rows: 100px 100px 100px 100px 100px;
