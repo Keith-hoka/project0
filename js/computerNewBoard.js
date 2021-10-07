@@ -79,10 +79,16 @@ if (prevWinO === null){
 
 $(".grid-item").each(function(){
   $(this).click(function(){
-    $(this).text(currentPlayer);
-      clickedArrX.push($(this).index());
-      boardArr = boardArr.filter(item => item !== $(this).index());
-      computerPlay();
+    if (currentPlayer === "X") {
+      if (clickedArrX.includes($(this).index()) || clickedArrO.includes($(this).index())){
+        return;
+      } else {
+        clickedArrX.push($(this).index());
+        boardArr = boardArr.filter(item => item !== $(this).index());
+        $(this).text(currentPlayer);
+        computerPlay();
+      }
+    }
     for (let i = 0; i < winning.length; i++) {
       for (let n = 0; n < clickedArr.length; n++){
         if (clickedArrO.length + clickedArrX.length < 25 && winning[i].every(elem => clickedArr[n].includes(elem))){
@@ -128,7 +134,7 @@ $("#game-btn").click(function(){
 });
 
 const computerPlay = function() {
-  const randomIndex = Math.round(Math.random() * boardArr.length - 1);
+  const randomIndex = Math.round(Math.random() * (boardArr.length - 1));
   if (boardArr.length > 1){
     $(`#item${boardArr[randomIndex]}`).text("O");
     clickedArrO.push(boardArr[randomIndex]);
